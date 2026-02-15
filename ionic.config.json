@@ -1,0 +1,7 @@
+{
+  "name": "mytabApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
