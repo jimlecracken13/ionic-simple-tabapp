@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title slot="start">
+      <h1 class="main-title">Produits</h1>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="light">
+        <ion-icon slot="icon-only" name="options-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="light">
+        <ion-icon slot="icon-only" name="filter-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="primary" class="add-btn" (click)="addProduct()">
+        <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-searchbar placeholder="Rechercher par le nom..." mode="ios" class="custom-search"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="inventory-header">
+    <span class="label">Tous les produits</span>
+    <span class="count">{{products.length}} Articles</span>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let product of products">
+        <ion-card class="product-card">
+          <div class="image-container">
+            
+            
+            <ion-badge class="cat-badge">{{ product.categorie.libelle }}</ion-badge>
+          </div>
+          
+          <ion-card-content>
+            <div class="title-price">
+              <span class="product-name">{{ product.libelle }}</span>
+              <span class="product-price">${{ product.prixVente }}</span>
+            </div>
+            <p class="stock-info">
+              <span>Stock: {{ product.quantite }}</span>
+              
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="load-more">
+    <ion-button fill="clear" color="medium">Charger plus d'articles...</ion-button>
+  </div>
+</ion-content>

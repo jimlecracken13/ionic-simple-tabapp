@@ -1,17 +1,79 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile & Paramètres</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="profile-card">
+    <div class="avatar-container">
+      <img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="Profile Picture" class="profile-avatar">
+      <ion-icon name="pencil" class="edit-icon"></ion-icon>
+    </div>
+    <div class="profile-info">
+      <h2 class="ion-no-margin"></h2>
+      <p class="ion-no-margin"></p>
+      <div class="admin-badge">
+        <ion-icon name="checkmark-circle"></ion-icon>
+      </div>
+    </div>
+  </div>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <form [formGroup]="profileForm">
+    <ion-list lines="none" class="security-section">
+      <ion-list-header>
+        <ion-label>Paramètres de sécurité</ion-label>
+      </ion-list-header>
+
+      <ion-item class="custom-input-item">
+        <ion-icon name="lock-closed" slot="start"></ion-icon>
+        <ion-input [type]="showPassword ? 'text' : 'password'" formControlName="oldPassword" placeholder="Mot de passe actuel"></ion-input>
+        <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'" slot="end" (click)="togglePassword()"></ion-icon>
+      </ion-item>
+
+      <div class="forgot-password-link">
+        <a href="#">Mot de passe oublié?</a>
+      </div>
+
+      <ion-item class="custom-input-item">
+        <ion-icon name="key" slot="start"></ion-icon>
+        <ion-input [type]="showPassword ? 'text' : 'password'" formControlName="newPassword" placeholder="Nouveau mot de passe"></ion-input>
+        <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'" slot="end" (click)="togglePassword()"></ion-icon>
+      </ion-item>
+
+      <div class="password-strength-indicators">
+        <span class="indicator-item" [class.valid]="profileForm.get('newPassword')?.value?.length >= 8">
+          <ion-icon [name]="profileForm.get('newPassword')?.value?.length >= 8 ? 'checkmark-circle' : 'radioButtonOff'"></ion-icon> 8+ carac
+        </span>
+        <span class="indicator-item" [class.valid]="profileForm.get('newPassword')?.errors?.['pattern'] === undefined && profileForm.get('newPassword')?.value">
+          <ion-icon [name]="profileForm.get('newPassword')?.value?.match('(?=.*[!@#$%^&*])') ? 'checkmark-circle' : 'radioButtonOff'"></ion-icon> Spécial & Nombre
+        </span>
+      </div>
+
+      <ion-item class="custom-input-item" [class.input-error]="profileForm.get('confirmPassword')?.errors?.['passwordMismatch']">
+        <ion-icon name="key" slot="start"></ion-icon>
+        <ion-input [type]="showPassword ? 'text' : 'password'" formControlName="confirmPassword" placeholder="Confirmer le nouveau mot de passe"></ion-input>
+        <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'" slot="end" (click)="togglePassword()"></ion-icon>
+      </ion-item>
+      <ion-note color="danger" *ngIf="profileForm.get('confirmPassword')?.errors?.['passwordMismatch']" style="padding-left: 16px;">
+        Les mots de passe ne correspondent pas.
+      </ion-note>
+    </ion-list>
+  </form>
+
+  <ion-footer class="ion-no-border">
+    <ion-toolbar class="ion-padding">
+      <ion-button expand="block" class="update-button" [disabled]="profileForm.invalid" (click)="updateProfile()">
+        <ion-icon name="save" slot="start"></ion-icon>
+        Mettre à jour
+      </ion-button>
+      <ion-button expand="block" fill="clear" color="danger" class="logout-button" (click)="logout()">
+        <ion-icon name="log-out" slot="start"></ion-icon>
+        Se déconnecter
+      </ion-button>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>

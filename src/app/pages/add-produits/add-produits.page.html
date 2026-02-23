@@ -1,0 +1,97 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="modal-handle"></div>
+    <ion-title>Ajouter un produit</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="productForm" (ngSubmit)="onAddProduct()">
+    
+    <div class="upload-container">
+      <div class="upload-box">
+        <ion-icon name="camera-outline"></ion-icon>
+        <span>Ajouter une photo</span>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <div class="input-group">
+        <ion-label>Nom du produit</ion-label>
+        <ion-item lines="none" class="custom-input" [class.input-error]="productForm.get('libelle')?.invalid && productForm.get('libelle')?.touched">
+          <ion-input formControlName="libelle" placeholder="ex, Pantalon baggy"></ion-input>
+        </ion-item>
+      </div>
+
+      <ion-row>
+        <ion-col size="4" class="ion-no-padding-start">
+          <div class="input-group">
+            <ion-label>Prix d'Achat</ion-label>
+            <ion-item lines="none" class="custom-input">
+              <span slot="start" class="currency">CFA</span>
+              <ion-input type="number" formControlName="prixAchat" placeholder="0"></ion-input>
+            </ion-item>
+          </div>
+        </ion-col>
+
+        <ion-col size="4" class="ion-no-padding-start">
+          <div class="input-group">
+            <ion-label>Prix de Vente</ion-label>
+            <ion-item lines="none" class="custom-input">
+              <span slot="start" class="currency">CFA</span>
+              <ion-input type="number" formControlName="prixVente" placeholder="0"></ion-input>
+            </ion-item>
+          </div>
+        </ion-col>
+
+        <ion-col size="4" class="ion-no-padding-end">
+          <div class="input-group">
+            <ion-label>Stock</ion-label>
+            <ion-item lines="none" class="custom-input">
+              <ion-input type="number" formControlName="quantite"></ion-input>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <div class="input-group">
+        <ion-label>Catégorie</ion-label>
+        <ion-item lines="none" class="custom-input">
+          <ion-select formControlName="idCategorie" placeholder="Sélectionner..." interface="popover">
+            @for(categorie of categories; track categorie.id)
+            {
+              <ion-select-option value="{{categorie.id}}">{{categorie.libelle}}</ion-select-option>
+            }
+            @empty{
+              <div class="no-data">Aucune catégorie</div>
+            }
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <div class="input-group">
+        <ion-label>Code Barre</ion-label>
+        <ion-item lines="none" class="custom-textarea">
+          <ion-textarea formControlName="codeBar" rows="3" placeholder="Scanner ou saisir le code..."></ion-textarea>
+        </ion-item>
+      </div>
+    </div>
+
+    <div class="action-footer">
+      <ion-button expand="block" color="primary" class="save-btn" type="submit" [disabled]="productForm.invalid">
+        <ion-icon slot="start" name="checkmark"></ion-icon>
+        Ajouter produit
+      </ion-button>
+      
+      <ion-button expand="block" fill="outline" color="medium" class="cancel-btn" (click)="dismiss()">
+        Annuler
+      </ion-button>
+    </div>
+
+  </form>
+</ion-content>

@@ -1,0 +1,89 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Créez un compte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+  <div class="register-container">
+    
+    <div class="hero-section">
+      <div class="icon-circle">
+        <ion-icon name="person-add"></ion-icon>
+      </div>
+      <h1>Rejoignez-nous</h1>
+      <p>Saisissez vos détails pour commencer avec votre nouveau compte</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="form-section ion-text-start">
+      
+      <ion-row>
+        <ion-col size="6" class="ion-no-padding-start">
+          <div class="input-group">
+            <ion-label>Nom</ion-label>
+            <ion-item lines="none" class="custom-input" [class.input-error]="registerForm.get('lastname')?.touched && registerForm.get('lastname')?.invalid">
+              <ion-input type="text" formControlName="lastname" placeholder="Doe"></ion-input>
+            </ion-item>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="ion-no-padding-end">
+          <div class="input-group">
+            <ion-label>Prénom</ion-label>
+            <ion-item lines="none" class="custom-input" [class.input-error]="registerForm.get('firstname')?.touched && registerForm.get('firstname')?.invalid">
+              <ion-input type="text" formControlName="firstname" placeholder="John"></ion-input>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <div class="input-group">
+        <ion-label>Adresse e-mail</ion-label>
+        <ion-item lines="none" class="custom-input" [class.input-error]="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-input type="email" formControlName="email" placeholder="exemple@email.com"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="input-group">
+        <ion-label>Mot de passe</ion-label>
+        <ion-item lines="none" class="custom-input" [class.input-error]="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+          <ion-input [type]="showPass ? 'text' : 'password'" formControlName="password" placeholder="Min. 8 caractères"></ion-input>
+          <ion-icon [name]="showPass ? 'eye-off-outline' : 'eye-outline'" slot="end" (click)="showPass = !showPass"></ion-icon>
+        </ion-item>
+      </div>
+
+      <div class="input-group">
+        <ion-label>Confirmez le mot de passe</ion-label>
+        <ion-item lines="none" class="custom-input" [class.input-error]="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched">
+          <ion-icon name="shield-checkmark-outline" slot="start"></ion-icon>
+          <ion-input [type]="showConfirmPass ? 'text' : 'password'" formControlName="confirmPassword" placeholder="Répétez le mot de passe"></ion-input>
+          <ion-icon [name]="showConfirmPass ? 'eye-off-outline' : 'eye-outline'" slot="end" (click)="showConfirmPass = !showConfirmPass"></ion-icon>
+        </ion-item>
+        <ion-note color="danger" *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched">
+          Les mots de passe ne correspondent pas.
+        </ion-note>
+      </div>
+
+      <ion-button expand="block" class="main-btn" type="submit" [disabled]="registerForm.invalid">
+        Créez un compte
+      </ion-button>
+    </form>
+
+    <div class="social-section">
+      <div class="divider"><span>Ou s'inscrire avec</span></div>
+      <ion-row>
+        <ion-col size="4"><ion-button fill="outline" class="social-square"><ion-icon name="logo-google"></ion-icon></ion-button></ion-col>
+        <ion-col size="4"><ion-button fill="outline" class="social-square"><ion-icon name="logo-apple"></ion-icon></ion-button></ion-col>
+        <ion-col size="4"><ion-button fill="outline" class="social-square"><ion-icon name="cube-outline"></ion-icon></ion-button></ion-col>
+      </ion-row>
+    </div>
+
+    <p class="footer-text">
+      Déjà un compte? <a href="/login">Se connecter</a>
+    </p>
+  </div>
+</ion-content>

@@ -1,0 +1,90 @@
+ion-header {
+  --background: #11151f;
+  padding: 15px 10px 5px;
+
+  ion-toolbar {
+    --background: #11151f;
+    --color: white;
+  }
+
+  .header-content {
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 0;
+    }
+    p {
+      font-size: 0.9rem;
+      color: #8a8a8e;
+      margin: 5px 0 0;
+    }
+  }
+
+  .add-button-header {
+    --padding-start: 10px;
+    font-size: 1.4rem;
+  }
+}
+
+ion-content {
+  --background: #11151f;
+
+  .list-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    
+    .label {
+      color: #8a8a8e;
+      font-size: 0.75rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    ion-badge {
+      --background: #1a1f2b;
+      --color: #3880ff;
+      font-size: 0.7rem;
+    }
+  }
+
+  .category-item {
+    --background: #1a1f2b;
+    --border-radius: 16px;
+    margin: 8px 16px;
+    --padding-start: 12px;
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+
+    .icon-container {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+
+      ion-icon {
+        font-size: 1.5rem;
+      }
+    }
+
+    h2 {
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    p {
+      color: #8a8a8e;
+      font-size: 0.85rem;
+      margin-top: 4px;
+    }
+  }
+
+  .delete-option {
+    --border-radius: 0 16px 16px 0;
+    margin: 8px 16px 8px -35px; // Ajustement pour coller à la carte
+    width: 80px;
+  }
+}

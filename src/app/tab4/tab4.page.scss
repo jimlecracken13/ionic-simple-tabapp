@@ -1,0 +1,111 @@
+ion-header {
+  --background: #11151f;
+  padding-top: 10px;
+
+  .main-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: white;
+    margin: 0;
+  }
+
+  .add-btn {
+    font-size: 1.4rem;
+    --padding-start: 10px;
+  }
+
+  .custom-search {
+    --background: #1a1f2b;
+    --border-radius: 12px;
+    --color: white;
+    padding: 0 16px 10px;
+  }
+}
+
+ion-content {
+  --background: #11151f;
+
+  .inventory-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    .label { color: #8a8a8e; font-size: 0.8rem; font-weight: bold; }
+    .count { color: #3880ff; font-size: 0.8rem; }
+  }
+
+  .product-card {
+    background: #1a1f2b;
+    margin: 8px;
+    border-radius: 16px;
+    box-shadow: none;
+
+    .image-container {
+      position: relative;
+      height: 140px;
+      background: #0d0d14;
+      border-radius: 12px;
+      margin: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img { object-fit: cover; height: 100%; width: 100%; }
+
+      .img-placeholder {
+        font-size: 3rem;
+        color: #ffffff;
+        opacity: 0.8;
+      }
+
+      .cat-badge {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        --background: rgba(0, 0, 0, 0.6);
+        --color: white;
+        font-size: 0.6rem;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    }
+
+    ion-card-content {
+      padding: 0 12px 12px;
+      
+      .title-price {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 5px;
+
+        .product-name {
+          color: white;
+          font-weight: 600;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .product-price {
+          color: #3880ff;
+          font-weight: bold;
+        }
+      }
+
+      .stock-info {
+        margin: 5px 0 0;
+        font-size: 0.8rem;
+        color: #8a8a8e;
+
+        &.low { color: #ff9800; }
+        &.out { color: #f44336; }
+      }
+    }
+  }
+
+  .load-more {
+    text-align: center;
+    padding: 20px;
+    --color: #8a8a8e;
+  }
+}

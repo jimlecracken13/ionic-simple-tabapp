@@ -1,0 +1,99 @@
+ion-header ion-toolbar {
+  --background: #1a1f2b;
+  --color: white;
+  ion-title { font-weight: bold; }
+}
+
+ion-content {
+  --background: #11151f;
+
+  .form-container {
+    .input-group {
+      margin-bottom: 25px;
+
+      ion-label {
+        color: white;
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 500;
+        span { color: #8a8a8e; font-size: 0.85rem; font-weight: normal; }
+      }
+
+      .custom-input, .custom-textarea {
+        --background: #1a1f2b;
+        --color: white;
+        border: 1px solid #2c3447;
+        border-radius: 12px;
+        --padding-start: 12px;
+      }
+    }
+
+    // Sélecteur d'icônes
+    .icon-selector {
+      display: flex;
+      gap: 12px;
+
+      .icon-chip {
+        background: #1a1f2b;
+        padding: 10px 15px;
+        border-radius: 12px;
+        border: 1px solid #2c3447;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: white;
+        flex: 1;
+        justify-content: center;
+
+        ion-icon { font-size: 1.2rem; color: #3880ff; }
+        span { font-size: 0.9rem; }
+
+        &.selected {
+          border-color: #3880ff;
+          background: rgba(56, 128, 255, 0.1);
+        }
+      }
+    }
+
+    // Palette de couleurs
+    .color-palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+
+      .color-dot {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        
+        ion-icon { color: white; font-size: 1.2rem; }
+        
+        &.selected {
+          box-shadow: 0 0 0 3px #11151f, 0 0 0 5px #3880ff;
+        }
+      }
+    }
+  }
+}
+
+ion-footer {
+  --background: #11151f;
+  padding: 10px 16px 20px;
+
+  .cancel-btn {
+    --color: #8a8a8e;
+    text-transform: none;
+    font-weight: 600;
+  }
+
+  .save-btn {
+    --border-radius: 12px;
+    height: 50px;
+    text-transform: none;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,206 @@
+ion-header {
+  // Styles pour la barre d'en-tête en mode sombre
+  ion-toolbar {
+    --background: #1a1a2e; // Couleur de fond de l'en-tête
+    --color: #ffffff; // Couleur du texte
+    padding-top: 10px; // Pour laisser de l'espace en haut
+    padding-bottom: 5px;
+  }
+
+  ion-back-button {
+    --color: #ffffff;
+  }
+
+  ion-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-inline-start: 0; // Réinitialiser le padding par défaut d'Ionic
+  }
+}
+
+ion-content {
+  --background: #0f0f1b; // Couleur de fond principale de la page
+  --color: #ffffff; // Couleur du texte par défaut
+
+  .profile-card {
+    background: #1a1a2e; // Couleur de fond de la carte profil
+    margin: 20px 16px;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); // Légère ombre
+
+    .avatar-container {
+      position: relative;
+      margin-right: 15px;
+
+      .profile-avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #3f51b5; // Petite bordure bleue autour de l'avatar
+      }
+
+      .edit-icon {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: #3f51b5; // Couleur du bouton d'édition
+        color: #ffffff;
+        border-radius: 50%;
+        padding: 4px;
+        font-size: 1.1em;
+        border: 2px solid #1a1a2e; // Bordure pour correspondre au fond de la carte
+      }
+    }
+
+    .profile-info {
+      h2 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #ffffff;
+      }
+      p {
+        font-size: 0.9rem;
+        color: #cccccc;
+        margin-top: 2px;
+      }
+      .admin-badge {
+        display: flex;
+        align-items: center;
+        background: #3f51b5; // Couleur du badge admin
+        color: #ffffff;
+        border-radius: 5px;
+        padding: 4px 8px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        margin-top: 8px;
+        width: fit-content;
+
+        ion-icon {
+          font-size: 0.9em;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  .security-section {
+    background: transparent; // La section est transparente pour laisser voir le fond de la page
+    padding: 0 10px; // Padding latéral pour les éléments de la liste
+
+    ion-list-header {
+      --background: transparent;
+      --color: #ffffff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding-inline-start: 6px; // Ajuster le padding
+      margin-top: 25px;
+      margin-bottom: 10px;
+
+      .last-changed-text {
+        font-size: 0.8rem;
+        color: #aaaaaa;
+        font-weight: normal;
+      }
+    }
+
+    .custom-input-item {
+      --background: #1a1a2e; // Fond de l'input
+      --border-radius: 8px;
+      margin-bottom: 12px;
+      padding-inline-start: 10px; // Padding intérieur pour l'icône de gauche
+      padding-inline-end: 10px; // Padding intérieur pour l'icône de droite
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); // Légère ombre sur l'input
+
+      ion-icon {
+        color: #bbbbbb; // Couleur des icônes dans les inputs
+        font-size: 1.2em;
+        margin-right: 10px;
+      }
+
+      ion-input {
+        --color: #ffffff; // Couleur du texte saisi
+        --placeholder-color: #888888; // Couleur du placeholder
+        --placeholder-opacity: 0.7;
+        font-size: 0.95rem;
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+    }
+
+    .forgot-password-link {
+      text-align: right;
+      padding-right: 16px; // Aligner avec les inputs
+      margin-top: -5px; // Remonter un peu pour coller au champ
+      margin-bottom: 20px;
+
+      a {
+        color: #4da6ff; // Couleur bleue pour le lien
+        text-decoration: none;
+        font-size: 0.85rem;
+      }
+    }
+
+    .password-strength-indicators {
+      display: flex;
+      justify-content: flex-start;
+      gap: 15px; // Espacement entre les indicateurs
+      margin-top: -5px; // Remonter un peu pour coller au champ
+      margin-left: 16px; // Aligner avec le début des inputs
+      margin-bottom: 20px;
+      font-size: 0.8em;
+      color: #aaaaaa;
+
+      .indicator-item {
+        display: flex;
+        align-items: center;
+        ion-icon {
+          font-size: 1.1em;
+          margin-right: 4px;
+        }
+
+        &.valid {
+          color: #6cda6c; // Vert pour les indicateurs validés
+          ion-icon {
+            color: #6cda6c;
+          }
+        }
+      }
+    }
+  }
+}
+
+ion-footer {
+  background: #0f0f1b; // Même couleur que le fond de la page
+  padding: 10px 16px 20px; // Padding bas pour les appareils avec "notch"
+
+  ion-toolbar {
+    --background: transparent; // Rendre la toolbar transparente pour que le fond du footer soit visible
+    padding: 0;
+  }
+
+  .update-button {
+    --background: #3f51b5; // Couleur bleue du bouton principal
+    --background-activated: #344499; // Couleur au clic
+    --border-radius: 8px;
+    height: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: capitalize; // Pas de majuscules automatiques
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); // Ombre pour le bouton
+  }
+
+  .logout-button {
+    --background: #ff4d4d; // Couleur rouge du bouton de déconnexion
+    --background-activated: #cc4444; // Couleur au clic
+    --border-radius: 8px;
+    height: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: capitalize; // Pas de majuscules automatiques
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); // Ombre pour le bouton
+  }
+}

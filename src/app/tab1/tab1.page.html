@@ -1,17 +1,61 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Utilisateurs</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="ellipsis-horizontal"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="admin-card">
+    <div class="avatar-wrapper">
+      <ion-avatar>
+        <img src="https://i.pravatar.cc/150?u=admin" />
+      </ion-avatar>
+      <div class="status-dot online"></div>
+    </div>
+    <div class="admin-info">
+      <span class="connected-label">Connecté</span>
+      <h2>{{ currentUser?.firstname || 'Admin' }}</h2>
+      <p>{{currentUser?.email || 'Super Administrator'}}</p>
+    </div>
+    <ion-button fill="clear" color="medium">
+      <ion-icon slot="icon-only" name="settings-sharp"></ion-icon>
+    </ion-button>
+  </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="search-container">
+    <ion-searchbar placeholder="Search users..." mode="ios" class="custom-search"></ion-searchbar>
+  </div>
+
+  <div class="list-header">
+    <ion-label>Tous les Utilisateurs</ion-label>
+    <ion-badge color="primary" mode="ios">Total: {{ users.length }}</ion-badge>
+  </div>
+
+  <ion-list lines="none">
+    <ion-item-sliding *ngFor="let user of users">
+      <ion-item class="user-item">
+        <ion-label>
+          <h2>{{ user.firstname }}</h2>
+        </ion-label>
+        <div class="action-buttons" slot="end">
+          <ion-button fill="clear" color="medium">
+            <ion-icon slot="icon-only" name="pencil-sharp"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" color="medium">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+
+ 
 </ion-content>

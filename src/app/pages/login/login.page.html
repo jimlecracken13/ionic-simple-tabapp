@@ -1,0 +1,70 @@
+<ion-content class="ion-padding ion-text-center">
+  <div class="login-container">
+    
+    <div class="brand-section">
+      <div class="logo-box">
+        <ion-icon name="archive"></ion-icon>
+      </div>
+      <h1 class="app-name">Gestionnaire de Stock</h1>
+    </div>
+
+    <div class="welcome-section ion-text-start">
+      <h2>Bienvenue</h2>
+      <p>Gérer votre stock de manière efficace</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="form-section ion-text-start" ReactiveFormsModule>
+      
+      <div class="input-group">
+        <ion-label>Adresse Email</ion-label>
+        <ion-item lines="none" class="custom-input" [class.input-error]="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-input type="email" formControlName="email" placeholder="name@company.com"></ion-input>
+        </ion-item>
+        <ion-note color="danger" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email']">
+          Format d'email invalide.
+        </ion-note>
+      </div>
+
+      <div class="input-group">
+        <div class="label-row">
+          <ion-label>Mot de Passe</ion-label>
+          <a href="#" class="forgot-link">Mot de passe oublié?</a>
+        </div>
+        <ion-item lines="none" class="custom-input" [class.input-error]="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+          <ion-input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="••••••••"></ion-input>
+          <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'" slot="end" (click)="togglePassword()"></ion-icon>
+        </ion-item>
+      </div>
+
+      <ion-item lines="none" class="remember-me">
+        <ion-checkbox slot="start" mode="md" formControlName="rememberMe"></ion-checkbox>
+        <ion-label>Se souvenir de moi</ion-label>
+      </ion-item>
+
+      <ion-button expand="block" class="main-btn" type="submit" [disabled]="loginForm.invalid">
+        Se Connecter
+      </ion-button>
+    </form>
+
+    <div class="divider">
+      <span>Ou continuer avec</span>
+    </div>
+
+    <ion-row class="social-grid">
+      <ion-col size="12">
+        <ion-button expand="block" fill="outline" class="social-btn">
+          <ion-icon name="logo-google" slot="start" class="google-color"></ion-icon>
+          Google
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <div class="footer-container">
+      <ion-note class="footer-text">
+        Vous n'avez pas encore de compte? <a href="/register">Créer un compte</a>
+      </ion-note>
+    </div>
+  </div>
+</ion-content>
